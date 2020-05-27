@@ -1,6 +1,6 @@
 clear
 clc
-[num,txt,raw] = xlsread('G:\ADNI2_analysis\Denoise\ssegdata_result\ADNI_fALFF_data.xlsx');
+[num,txt,raw] = xlsread('G:\ADNI2_analysis\Denoise\ssegdata_result\ADNI_data.xlsx');
 datadir = 'G:\ADNI2_data';TR=3;
 savepath = 'G:\ADNI2_analysis\Denoise\ssegdata';
 sz = [91,109,91];
