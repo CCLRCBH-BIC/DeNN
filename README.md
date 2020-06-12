@@ -19,11 +19,11 @@ We have shared the preprocessing script (ADNI_extractsegdata.m), which we have u
 The scripts for DeNN is currently not publicly available. However, researchers can reach us by sending email to yzhengshi@gmail.com and provide us the .mat file from preprocessing script for DeNN denoising. Please keep the data anonymous.
 ### 4. Reference
 Please cite the following reference if you use DeNN in your research.
-Yang et al., Disentangling time series between brain tissues improves fMRI data quality using a time-dependent deep neural network.
+* Yang et al., Disentangling time series between brain tissues improves fMRI data quality using a time-dependent deep neural network.
 
 Other two references you may have interest:
 Deep neural network for task fMRI denoising
-Yang et al., (2020) A robust deep neural network for denoising task-based fMRI data: An application to working memory and episodic memory. Medical Imaging Analysis, https://doi.org/10.1016/j.media.2019.101622.
+* Yang et al., (2020) A robust deep neural network for denoising task-based fMRI data: An application to working memory and episodic memory. Medical Imaging Analysis, https://doi.org/10.1016/j.media.2019.101622.
 Regression based deep neural network for resting state fMRI denoising
-Yang et al., (2019) Robust Motion Regression of Resting-State Data Using a Convolutional Neural Network Model. Front. Neurosci., 28 February 2019 | https://doi.org/10.3389/fnins.2019.00169.
+* Yang et al., (2019) Robust Motion Regression of Resting-State Data Using a Convolutional Neural Network Model. Front. Neurosci., 28 February 2019 | https://doi.org/10.3389/fnins.2019.00169.
 
