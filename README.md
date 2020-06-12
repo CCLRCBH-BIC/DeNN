@@ -22,8 +22,10 @@ Please cite the following reference if you use DeNN in your research.
 * Yang et al., Disentangling time series between brain tissues improves fMRI data quality using a time-dependent deep neural network. Under review.
 
 Other two references you may have interest:
+
 Deep neural network for task fMRI denoising
 * Yang et al., (2020) A robust deep neural network for denoising task-based fMRI data: An application to working memory and episodic memory. Medical Imaging Analysis, https://doi.org/10.1016/j.media.2019.101622.
+
 Regression based deep neural network for resting state fMRI denoising
 * Yang et al., (2019) Robust Motion Regression of Resting-State Data Using a Convolutional Neural Network Model. Front. Neurosci., 28 February 2019 | https://doi.org/10.3389/fnins.2019.00169.
 
