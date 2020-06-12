@@ -19,7 +19,7 @@ We have shared the preprocessing script (ADNI_extractsegdata.m), which we have u
 The scripts for DeNN is currently not publicly available. However, researchers can reach us by sending email to yzhengshi@gmail.com and provide us the .mat file from preprocessing script for DeNN denoising. Please keep the data anonymous.
 ### 4. Reference
 Please cite the following reference if you use DeNN in your research.
-* Yang et al., Disentangling time series between brain tissues improves fMRI data quality using a time-dependent deep neural network.
+* Yang et al., Disentangling time series between brain tissues improves fMRI data quality using a time-dependent deep neural network. Under review.
 
 Other two references you may have interest:
 Deep neural network for task fMRI denoising
