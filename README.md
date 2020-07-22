@@ -84,6 +84,7 @@ If you have interest to the source code, please write a short description about 
 
 ### 5. DeNN on diffusion MRI data
 Both fMRI data and diffusion MRI data are 4-D data (x * y * z * time/channels). We have quickly run DeNN on diffusion MRI data, where each time point in fMRI data is replaced with each channel in diffusion MRI data. It is interesting to find out that the sum of "denoised data" across all channels is similar to a fractional anisotropy (FA) map, which suggests DeNN possibily can uncover the fiber orientation without model fitting. In order to check whether DeNN artifically introuces "anisotropy" into the data, we have also shown the corresponding denoised data for b=0 channel. A homogeneous spatial map is observed for b=0 channel, which means DeNN is unlikely to induce artifical "anisotropy". The contrast between gray matter and white matter is gone probably because the data is normalized across channels. **We are welcome for external collaboration for denoising diffusion MRI data.**
+![Test Image 1](https://github.com/pipiyang/DeNN/blob/master/DeNN%20for%20dMRI.tif)
 
 ### 6. Reference
 Please cite the following reference if you use DeNN in your research.
