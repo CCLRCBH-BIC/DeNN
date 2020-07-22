@@ -17,11 +17,11 @@ This is a step to save a .mat file for each individual subject, which is the inp
 We have shared the preprocessing script (ADNI_extractsegdata.m), which we have used for ADNI data. Researchers can change the directory to their own data
 ### 3. DeNN denoising
 Once you obtain the output file from ADNI_extractsegdata.m, DeNN can now be used for fMRI denoising. The example code how to run DeNN is test.py. 
-* Required libraries
+### 3.1 Required libraries
 - [Python](https://www.python.org/downloads/): Python 3 by default, the script is compiled with Python 3.5 under Windows system environment.
 - [Keras](https://keras.io/): the script is compiled with Keras 2.2.4
 - [Theano](http://deeplearning.net/software/theano/): the script is compiled with Theano 1.0.4
-* Code snippet in test.py
+### 3.2 Key code snippet in test.py
 ```python
 import os,sys
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
