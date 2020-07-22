@@ -16,7 +16,56 @@ This is a step to save a .mat file for each individual subject, which is the inp
 * preprocessing script
 We have shared the preprocessing script (ADNI_extractsegdata.m), which we have used for ADNI data. Researchers can change the directory to their own data
 ### 3. DeNN denoising
-The scripts for DeNN is currently not publicly available. However, researchers can reach us by sending email to yzhengshi@gmail.com and provide us the .mat file from preprocessing script for DeNN denoising. Please keep the data anonymous.
+Once you obtain the output file from ADNI_extractsegdata.m, DeNN can now be used for fMRI denoising. The example code how to run DeNN is test.py. 
+* Required libraries
+- [Python](https://www.python.org/downloads/): Python 3 by default, the script is compiled with Python 3.5 under Windows system environment.
+- [Keras](https://keras.io/): the script is compiled with Keras 2.2.4
+- [Theano](http://deeplearning.net/software/theano/): the script is compiled with Theano 1.0.4
+* Code snippet in test.py
+```cshell
+import os,sys
+os.environ["CUDA_VISIBLE_DEVICES"]="0"
+```
+Specify which GPU card to use, in case there are multiple GPU cards in the workstation.
+
+```cshell
+fMRIdata,c1T1,c2T1_erode,c3T1_erode = readMat.readMatVars(tempdatadir,varname=('fMRIdata','c1T1','c2T1_erode',
+                                                                               'c3T1_erode'))
+```
+Read the .mat file from preprocessing script.
+
+```cshell
+from DeNN import denoise_model,denoise_loss
+```
+From the DeNN library import the denoise model and the loss function.
+
+```cshell
+model = denoise_model(tdim)
+opt = Adam(lr=0.05,beta_1=0.9, beta_2 = 0.999, decay = 0.05)
+model.compile(optimizer=opt,loss=denoise_loss)
+```
+Setup the denoising model, optimizer and compile the model.
+
+```cshell
+y_true = numpy.ones((nvoxel_train,tdim,2))
+```
+Dummy true data (True signal in fMRI data is unknown), any array with dimension matched should be fine.
+
+```cshell
+history = model.fit([train_c1[:,[i],:] for i in range(tdim)]+
+                    [train_c23[:,[i],:] for i in range(tdim)],
+                    y=y_true,batch_size = 500,validation_split=0.1,epochs = epochs)  
+```
+Model fitting, early stopping criteria can be specified here.
+
+```cshell
+fMRIdata_q_output = model.predict([fMRIdata_q[:,[i],:] for i in range(tdim)]+
+                                    [fMRIdata_q[:,[i],:] for i in range(tdim)]
+                                    ,batch_size=500)
+```
+Output the denoised fMRI data.
+
+
 ### 4. Reference
 Please cite the following reference if you use DeNN in your research.
 * Yang et al., Disentangling time series between brain tissues improves fMRI data quality using a time-dependent deep neural network. Under review.
