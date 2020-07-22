@@ -22,43 +22,43 @@ Once you obtain the output file from ADNI_extractsegdata.m, DeNN can now be used
 - [Keras](https://keras.io/): the script is compiled with Keras 2.2.4
 - [Theano](http://deeplearning.net/software/theano/): the script is compiled with Theano 1.0.4
 * Code snippet in test.py
-```cshell
+```python
 import os,sys
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
 ```
 Specify which GPU card to use, in case there are multiple GPU cards in the workstation.
 
-```cshell
+```python
 fMRIdata,c1T1,c2T1_erode,c3T1_erode = readMat.readMatVars(tempdatadir,varname=('fMRIdata','c1T1','c2T1_erode',
                                                                                'c3T1_erode'))
 ```
 Read the .mat file from preprocessing script.
 
-```cshell
+```python
 from DeNN import denoise_model,denoise_loss
 ```
 From the DeNN library import the denoise model and the loss function.
 
-```cshell
+```python
 model = denoise_model(tdim)
 opt = Adam(lr=0.05,beta_1=0.9, beta_2 = 0.999, decay = 0.05)
 model.compile(optimizer=opt,loss=denoise_loss)
 ```
 Setup the denoising model, optimizer and compile the model.
 
-```cshell
+```python
 y_true = numpy.ones((nvoxel_train,tdim,2))
 ```
 Dummy true data (True signal in fMRI data is unknown), any array with dimension matched should be fine.
 
-```cshell
+```python
 history = model.fit([train_c1[:,[i],:] for i in range(tdim)]+
                     [train_c23[:,[i],:] for i in range(tdim)],
                     y=y_true,batch_size = 500,validation_split=0.1,epochs = epochs)  
 ```
 Model fitting, early stopping criteria can be specified here.
 
-```cshell
+```python
 fMRIdata_q_output = model.predict([fMRIdata_q[:,[i],:] for i in range(tdim)]+
                                     [fMRIdata_q[:,[i],:] for i in range(tdim)]
                                     ,batch_size=500)
