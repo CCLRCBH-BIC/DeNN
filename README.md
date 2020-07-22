@@ -65,6 +65,13 @@ fMRIdata_q_output = model.predict([fMRIdata_q[:,[i],:] for i in range(tdim)]+
 ```
 Output the denoised fMRI data.
 
+```matlab
+load(DeNNsub,'fMRIdata_q','mask');
+denoiseddata = zeros(size(fMRIdata_q,2),91,109,91);
+denoisedmask = permute(mask,[3,2,1]);
+denoiseddata(:,denoisedmask>0) = fMRIdata_q';
+```
+Transform the denoised data into 4-D using MATLAB.
 
 ### 4. Reference
 Please cite the following reference if you use DeNN in your research.
