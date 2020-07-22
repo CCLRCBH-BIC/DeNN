@@ -18,7 +18,7 @@ A deep neural network framework for denosing functional MRI(fMRI) data
   4D fMRI data should have been preprocessed with slice-timing correction, realignment. Any other preprocessing steps are optional.
 * preprocessing script
 
-We have shared the preprocessing script (ADNI_extractsegdata.m), which we have used for ADNI data. Researchers can change the directory to their own data
+  We have shared the preprocessing script (ADNI_extractsegdata.m), which we have used for ADNI data. Researchers can change the directory to their own data
 ### 3. DeNN denoising
 Once you obtain the output file from ADNI_extractsegdata.m, DeNN can now be used for fMRI denoising. The example code how to run DeNN is test.py. 
 ### 3.1 Required libraries
