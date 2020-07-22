@@ -10,11 +10,14 @@ A deep neural network framework for denosing functional MRI(fMRI) data
 ### 2. Preprocessing
 * Purpose of preprocessing
 
-This is a step to save a .mat file for each individual subject, which is the input data for DeNN denoising. Technically it should not be called as preprocessing. :)
+  This is a step to save a .mat file for each individual subject, which is the input data for DeNN denoising. Technically it should not be called as preprocessing. :)
 * Required input files
-4D fMRI data, structural MRI data, and segmented MRI images (gray matter, white matter and cerebrospinal fluid). These images should be in the same space, either the native space or the template space.
-4D fMRI data should have been preprocessed with slice-timing correction, realignment. Any other preprocessing steps are optional.
+
+  4D fMRI data, structural MRI data, and segmented MRI images (gray matter, white matter and cerebrospinal fluid). These images should be in the same space, either the native space or the template space.
+  
+  4D fMRI data should have been preprocessed with slice-timing correction, realignment. Any other preprocessing steps are optional.
 * preprocessing script
+
 We have shared the preprocessing script (ADNI_extractsegdata.m), which we have used for ADNI data. Researchers can change the directory to their own data
 ### 3. DeNN denoising
 Once you obtain the output file from ADNI_extractsegdata.m, DeNN can now be used for fMRI denoising. The example code how to run DeNN is test.py. 
