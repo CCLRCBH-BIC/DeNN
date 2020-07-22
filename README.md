@@ -77,7 +77,15 @@ denoiseddata(:,denoisedmask>0) = fMRIdata_q';
 ```
 Transform the denoised data into 4-D using MATLAB.
 
-### 4. Reference
+### 4. Questions
+If you have any questions about DeNN or have difficulty to setup DeNN for your own data, please have no hesitation to contact Zhengshi Yang (yzhengshi@gmail.com).
+
+If you have interest to the source code, please write a short description about the project and send it to Zhengshi Yang (yzhengshi@gmail.com).
+
+### 5. DeNN on diffusion MRI data
+Both fMRI data and diffusion MRI data are 4-D data (x * y * z * time/channels). We have quickly run DeNN on diffusion MRI data, where each time point in fMRI data is replaced with each channel in diffusion MRI data. It is interesting to find out that the sum of "denoised data" across all channels is similar to a fractional anisotropy (FA) map, which suggests DeNN possibily can uncover the fiber orientation without model fitting. In order to check whether DeNN artifically introuces "anisotropy" into the data, we have also shown the corresponding denoised data for b=0 channel. A homogeneous spatial map is observed for b=0 channel, which means DeNN is unlikely to induce artifical "anisotropy". The contrast between gray matter and white matter is gone probably because the data is normalized across channels. **We are welcome for external collaboration for denoising diffusion MRI data.**
+
+### 6. Reference
 Please cite the following reference if you use DeNN in your research.
 * Yang et al., Disentangling time series between brain tissues improves fMRI data quality using a time-dependent deep neural network. Under review.
 
