@@ -27,7 +27,9 @@ Once you obtain the output file from ADNI_extractsegdata.m, DeNN can now be used
 - [Theano](http://deeplearning.net/software/theano/): the script is compiled with Theano 1.0.4
 ### 3.2 Functions in DeNN library
 *```python denoise_model(tdim)```: The model used in our study to denoise ADNI data and HCP data.
+
 *```python denoise_model_general(tdim,layers_type=["tden","tdis","tdis","conv","conv","conv"],layers_size=[128,32,16,8,4,1])```: A more general framework to design DeNN denoising model, the users can flexibly specify different layers and sizes. "tden": Time-dependent fully-connected layer, "tdis": time-distributed fully-connected layer, "conv": 1-dimentional temporal convolutional layer.
+
 *```python denoise_loss(y_true,y_pred)```: The loss function designed to disentangle gray matter and non-gray matter time series. y_true is a dummy variable in our case.
 ### 3.3 Key code snippet in test.py
 ```python
