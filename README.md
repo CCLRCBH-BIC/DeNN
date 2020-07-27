@@ -25,7 +25,11 @@ Once you obtain the output file from ADNI_extractsegdata.m, DeNN can now be used
 - [Python](https://www.python.org/downloads/): Python 3 by default, the script is compiled with Python 3.5 under Windows system environment.
 - [Keras](https://keras.io/): the script is compiled with Keras 2.2.4
 - [Theano](http://deeplearning.net/software/theano/): the script is compiled with Theano 1.0.4
-### 3.2 Key code snippet in test.py
+### 3.2 Functions in DeNN library
+*```python denoise_model(tdim) ```:
+*```python denoise_model_general(tdim,layers_type=["tden","tdis","tdis","conv","conv","conv"],layers_size=[128,32,16,8,4,1]) ```:
+*```python denoise_loss(y_true,y_pred) ```:
+### 3.3 Key code snippet in test.py
 ```python
 import os,sys
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
