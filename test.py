@@ -6,13 +6,12 @@ compared to v1: the first dense layer is changed to size 16
 """
 import os,sys
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
-from DeNN import denoise_model,denoise_loss
-sys.path.insert(0,'C:/Users/Admin/ZY/Python/CommonFun')
+from DeNN import denoise_model,denoise_loss,denoise_model_general,readMatVars
 datapath = 'U:/ADNI2_analysis/Denoise/ssegdata'
 from os import listdir
 from os.path import isfile, join
 datafiles = [f for f in listdir(datapath) if isfile(join(datapath,f))]
-import readMat,numpy
+import numpy
 from scipy.io import savemat
 from keras.optimizers import Adam
 from keras.callbacks import EarlyStopping
@@ -25,7 +24,7 @@ for subid,sub in enumerate(datafiles):
     savedatadir = datapath+"_DeNNTS/v1b1/"+sub[:-4]
     if path.isfile(savedatadir+'.mat')==True:
         savedatadir = datapath+"_DeNNTS/v1b1/"+sub[:-4]
-        fMRIdata,c1T1,c2T1_erode,c3T1_erode = readMat.readMatVars(tempdatadir,varname=('fMRIdata','c1T1','c2T1_erode',
+        fMRIdata,c1T1,c2T1_erode,c3T1_erode = readMatVars(tempdatadir,varname=('fMRIdata','c1T1','c2T1_erode',
                                                                                        'c3T1_erode'))
         
         fMRIdata = numpy.transpose(fMRIdata,axes=(3,0,1,2))
@@ -48,9 +47,8 @@ for subid,sub in enumerate(datafiles):
         trainind_c23 = numpy.random.permutation(nvoxel_c23)[:nvoxel_train]
         tdim = fMRIdata_c1.shape[1]
         
-        model = denoise_model(tdim)
+        model = denoise_model_general(tdim,layers_type=["tden","tdis","tdis","conv","conv","conv"],layers_size=[128,32,16,8,4,1])
         opt = Adam(lr=0.05,beta_1=0.9, beta_2 = 0.999, decay = 0.05)
-    #    opt = Adam(lr=0.01,beta_1=0.9, beta_2 = 0.999, decay = 0.05)
         model.compile(optimizer=opt,loss=denoise_loss)
         
         train_c1 = fMRIdata_c1[trainind_c1,:,:]
