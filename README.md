@@ -25,7 +25,7 @@ Once you obtain the output file from ADNI_extractsegdata.m, DeNN can now be used
 - [Python](https://www.python.org/downloads/): Python 3 by default, the script is compiled with Python 3.5 under Windows system environment.
 - [Keras](https://keras.io/): the script is compiled with Keras 2.2.4
 - [Theano](http://deeplearning.net/software/theano/): the script is compiled with Theano 1.0.4
-### 3.2 Functions in DeNN library
+### 3.2 Functions in DeNN
 *```denoise_model(tdim)```: The model used in our study to denoise ADNI data and HCP data.
 
 *```denoise_model_general(tdim,layers_type=["tden","tdis","tdis","conv","conv","conv"],layers_size=[128,32,16,8,4,1])```: A more general framework to design DeNN denoising model, the users can flexibly specify different layers and sizes. "tden": Time-dependent fully-connected layer, "tdis": time-distributed fully-connected layer, "conv": 1-dimentional temporal convolutional layer.
