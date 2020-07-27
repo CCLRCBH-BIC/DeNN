@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Aug 09 17:30:34 2018
-compared to v1: the first dense layer is changed to size 16
 @author: Admin
 """
 import os,sys
