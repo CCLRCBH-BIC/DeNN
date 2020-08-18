@@ -83,12 +83,15 @@ denoiseddata(:,denoisedmask>0) = fMRIdata_q';
 ```
 Transform the denoised data into 4-D using MATLAB.
 
-### 4. Questions
+### 4. Available de-noised data
+We have successfully applied DeNN to de-noise 665 ADNI resting-state fMRI sessions, all the ADNI2 fMRI sessions and a small fraction of ADNI3 fMRI sessions should be covered in this de-noised dataset. If you have interest in ADNI data, we are happy to share the functional connectivity maps and graph theoretical measures (using AAL atlas). The de-noised time series would be more difficult to share because of the data size.
+
+### 5. Questions
 If you have any questions about DeNN or have difficulty to setup DeNN for your own data, please have no hesitation to contact Zhengshi Yang (yzhengshi@gmail.com).
 
 If you have interest to the source code, please write a short description about the project and send it to Zhengshi Yang (yzhengshi@gmail.com).
 
-### 5. Reference
+### 6. Reference
 Please cite the following reference if you use DeNN in your research.
 * Yang et al., Disentangling time series between brain tissues improves fMRI data quality using a time-dependent deep neural network. Under review.
 
