@@ -1,5 +1,7 @@
 clear
 clc
+% this script reads the fMRI data and the corrresponding gray matter (c1), white matter (c2) and csf (c3) masks in the space to extract .mat file, which is the required file for denoising.
+% ADNI_data.xlsx is a file I used to save subject ID and file path, which is not required. 
 [num,txt,raw] = xlsread('G:\ADNI2_analysis\Denoise\ssegdata_result\ADNI_data.xlsx');
 datadir = 'G:\ADNI2_data';TR=3;
 savepath = 'G:\ADNI2_analysis\Denoise\ssegdata';
@@ -18,13 +20,13 @@ for i = 2:size(raw,1)
         T1name = dir([datadir,'/',subname,'/MPRAGE/',acqdate,'*']);
         T1name = T1name(1).name;
         
-        motion_file = selectImageDir([datadir,'/',raw{i,1},'/rest_state/',fMRIname],'rp_*.txt');
+        motion_file = selectImageDir([datadir,'/',raw{i,1},'/rest_state/',fMRIname],'rp_*.txt'); % revise this line to find the motion parameter file from rigid affine transformation
         motion_parameter = textread(motion_file{1});
         motion_parameter = motion_parameter(6:end,:);
         fMRIdata = ZY_fmrimerge([datadir,'/',subname,'/rest_state/',...
-            fMRIname,'/std_raResting_State_*.nii']);
+            fMRIname,'/std_raResting_State_*.nii']);% revise this line. dimension t x y z, any command you use to load fMRI data is fine, as long as the dimension order is correct.
         
-        T1dir = [datadir,'/',subname,'/MPRAGE/',T1name];
+        T1dir = [datadir,'/',subname,'/MPRAGE/',T1name]; % revise this line. the path to gm, wm and csf masks.
         c1T1 = load_untouch_nii([T1dir,'/SyNT12MNIc1MPRAGE.nii']);
         c2T1 = load_untouch_nii([T1dir,'/SyNT12MNIc2MPRAGE.nii']);
         c3T1 = load_untouch_nii([T1dir,'/SyNT12MNIc3MPRAGE.nii']);
